@@ -12,3 +12,6 @@ source venv/bin/activate
 
 ## Run:
 $python app.py
+
+## Note:
+Miss file MBABT_final.weights because it is oversize than 100MB
