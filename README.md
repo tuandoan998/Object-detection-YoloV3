@@ -1,10 +1,11 @@
-# WebDetect
+# Detect 5 object: Motorcycle, Bus, Ambulance, Bicycle, Traffic light
 
 ## Create virtual enviroment:
-[first time:
-pip install virtualenv
+[first time: <br/>
+pip install virtualenv  
 virtualenv -p /usr/bin/python2.7 venv
 ]
+<br/>
 source venv/bin/activate
 
 ## Install packages in requirements.txt
