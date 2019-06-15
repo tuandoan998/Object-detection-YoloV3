@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detection demos">
+    <meta name="author" content="fyk@xidian">
+
+    <title>MBABT_detect</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Script to instantly classify an image once it is uploaded. -->
+    <script type="text/javascript">
+      $(document).ready(
+        function(){
+          $('#classifyfile').attr('disabled',true);
+          $('#imagefile').change(
+            function(){
+              if ($(this).val()){
+                $('#formupload').submit();
+              }
+            }
+          );
+        }
+      );
+    </script>
+
+    <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height:1.5em;
+      color: #232323;
+      -webkit-font-smoothing: antialiased;
+      background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    }
+
+    h1, h2, h3 {
+      font-family: Times, serif;
+      line-height:1.5em;
+      border-bottom: 1px solid #ccc;
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header" align="center">
+        <h1><a href="/">Detect "Motorcycle - Bus - Ambulance - Bicycle - Traffic light" using YoloV3</a></h1>
+      </div>
+
+      {% if has_result %}
+      {% if not result[0] %}
+      <!-- we have error in the result. -->
+      <div class="alert alert-danger">{{ result[1] }} </div>
+      <div class="media">
+          <a class="pull-left" href="#"><img class="media-object" src={{ imagesrc }}></a>
+          <div class="media-body">
+            <div class="bs-example bs-example-tabs">
+              <ul id="myTab2" class="nav nav-tabs">
+                <li class="active"><a href="#infopred" data-toggle="tab">Prediction</a></li>
+                <!--<li><a href="#flatpred" data-toggle="tab">Maximally specific</a></li>-->
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      {% else %}
+      <div class="media">
+        <a class="pull-left" href="#"><img class="media-object" src={{ imagesrc }}></a>
+        <div class="media-body">
+          <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#infopred" data-toggle="tab">Prediction</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="infopred">
+                <ul class="list-group">
+                  {% for single_pred in result[2] %}
+                  <li class="list-group-item">
+                  <span class="badge">{{ single_pred[1] }}</span>
+                  <p class="list-group-item-heading">
+                    <!--<a href="https://www.google.com/#q={{ single_pred[0] }}" target="_blank">{{ single_pred[0] }}</a>-->
+                    <a>{{ single_pred[0] }}</a>
+                  </p>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p> Time consuming {{ result[3] }} second. </p>
+        </div>
+      </div>
+
+      {% endif %}
+
+      {% endif %}
+
+      <hr>
+
+      <form role="form" action="classify_url" method="get">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" name="imageurl" id="imageurl" placeholder="Enter image URL" required>
+            <span class="input-group-btn">
+              <input class="btn btn-primary" value="Detection URL" type="submit" id="classifyurl"></input>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+      </form>
+
+      <form id="formupload" class="form-inline" role="form" action="classify_upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="imagefile">Or upload an image:</label>
+          <input type="file" name="imagefile" id="imagefile">
+        </div>
+      </form>
+    </div>
+
+    <hr>
+    <div id="footer">
+      <div class="container">
+        <marquee>Do the right thing!</marquee>
+      </div>
+   </div>
+ </body>
+</html>
