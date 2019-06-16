@@ -1,5 +1,5 @@
 # Detect 5 object: Motorcycle, Bus, Ambulance, Bicycle, Traffic light
-![alt text](https://github.com/tuandoan998/Yolo-v3-with-Flask/blob/master/data/motorcycle.jpg)
+![alt text](https://github.com/tuandoan998/Yolo-v3-with-Flask/blob/master/data/Results/Screenshot%20from%202019-06-12%2021-11-55.png)
 ## Create virtual enviroment:
 [first time: <br/>
 pip install virtualenv  
