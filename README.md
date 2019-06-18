@@ -15,8 +15,10 @@ source venv/bin/activate
 $python app.py
 
 ## Note:
-Missing file - MBABT_final.weights (>100MB): https://drive.google.com/file/d/1spYn20FO13dwZhwk6plQ7LloxXaNelzb/view?usp=sharing
-<br/>
+### Missing file:
+MBABT_final.weights (>100MB): https://drive.google.com/file/d/1spYn20FO13dwZhwk6plQ7LloxXaNelzb/view?usp=sharing
+
+### Colab notebook:
 Yolov3.ipynb: https://colab.research.google.com/drive/16Xboc4DGhD9ra6RUwfCq1K5cN632kW1l
 <br/>
 TrainBMABT.ipynb: https://colab.research.google.com/drive/13oW5gs-ym8z82DcoQiEzdf6xhEkSYi4B
